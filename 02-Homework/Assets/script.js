@@ -77,7 +77,7 @@ var confirmUsespecials = confirm("Would you like to use Special characters in yo
 
   console.log (confirmChar);
   console.log (userPassword);
-
+  console.log (password);
 
 
 
