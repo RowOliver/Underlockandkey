@@ -2,17 +2,17 @@
 var generateBtn = document.querySelector("#generate");
 
 // Make button clickable?
-generateBtn.addEventListener("click", writePassword);
+generateBtn.addEventListener("click", generatePassword);
 
 var userPassword = [];
 var confirmChar = [];
 
 // Things that the password could contain
 var passwordLength = " ";
-var useUpperCase = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
-var useLowerCase = [ "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-var useNumbers = ["1","2","3","4","5","6","7","8","9","0"];
-var useSpecials = ["!","@","#","$","%","^","&","*","(",")","_","+","=","{","}","|","]","[",":",";","'","?","/",".",">",",","<","`","~"];
+var useUpperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+var useLowerCase = "abcdefghijklmnopqrstuvwxyz";
+var useNumbers = "123456789";
+var useSpecials = "!#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
 
 // Write password to the #password input
 
@@ -44,23 +44,23 @@ var confirmUsespecials = confirm("Would you like to use Special characters in yo
 
 // if statements that prompt the user through 
 
-  if (confrimUseUpperCase === true) {
-      confirmChar.push(useUpperCase);
+  if (confrimUseUpperCase) {
+      confirmChar.push(...useUpperCase);
      
   }
 
-  if (confrimUseLowerCase === true) {
-    confirmChar.push(useLowerCase);
+  if (confrimUseLowerCase) {
+    confirmChar.push(...useLowerCase);
   }
 
 
-  if (confirmUseNumbers == true) {
-    confirmChar.push(useNumbers);
+  if (confirmUseNumbers) {
+    confirmChar.push(...useNumbers);
 
   }
   
-  if (confirmUsespecials == true) {
-    confirmChar.push(useSpecials);
+  if (confirmUsespecials) {
+    confirmChar.push(...useSpecials);
 
   }
 // the loop that causes the code to run through and randomized the data that it has collected 
@@ -68,17 +68,17 @@ var confirmUsespecials = confirm("Would you like to use Special characters in yo
   for(var i = 0; i < passwordLength; i++) {
     
     userPassword.push(confirmChar[Math.floor(Math.random() * confirmChar.length )]); 
-
+     console.log(userPassword.join("+"));
   
   }
-  
-
+  // find an element on HTML and give it value
+  document.getElementById("password").value = userPassword.join(" ");
 
 
   console.log (confirmChar);
   console.log (userPassword);
   console.log (password);
-
+  
 
 
 }
